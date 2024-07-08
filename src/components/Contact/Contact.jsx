@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import s from "./Contact.module.css";
+// import
 
-const Contact = () => {
+const Contact = ({ handleDeleteContact, id }) => {
   return (
     <div className={s.contacts}>
       <ul className={s.list}>
@@ -10,9 +11,16 @@ const Contact = () => {
       </ul>
 
       <div>
-        <button type="button">Delete</button>
+        <button
+          onClick={() => handleDeleteContact(id)}
+          className="button"
+          size="18px"
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
 };
+
 export default Contact;
