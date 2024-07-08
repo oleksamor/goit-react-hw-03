@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import ContactList from "./components/ContactList/ContactList";
 
 function App() {
   const [count, setCount] = useState([
@@ -17,8 +18,9 @@ function App() {
     <div>
       <div>
         <h1>Phonebook</h1>
-        <ContactForm />
-        <SearchBox />
+
+        {/* <ContactForm /> */}
+        {/* <SearchBox /> */}
         <ContactList />
       </div>
     </div>
