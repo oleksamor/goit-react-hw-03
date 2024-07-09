@@ -10,19 +10,17 @@ function App() {
     { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
   ]);
 
-  // const handleLogin = (userData) => {
-  //   console.log(userData);
-  // };
+  const handleDeleteContact = (id) => {
+    console.log(id);
+  };
 
   return (
     <div>
-      <div>
-        <h1>Phonebook</h1>
+      <h1>Phonebook</h1>
 
-        {/* <ContactForm /> */}
-        {/* <SearchBox /> */}
-        <ContactList />
-      </div>
+      {/* <ContactForm /> */}
+      {/* <SearchBox /> */}
+      <ContactList />
     </div>
   );
 }

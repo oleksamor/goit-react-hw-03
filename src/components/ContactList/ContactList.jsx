@@ -1,10 +1,10 @@
 import "./ContactList.module.css";
 import Contact from "../Contact/Contact";
 
-const ContactList = () => {
+const ContactList = (contacts) => {
   return (
     <div>
-      <Contact key={item.id} {...item} />
+      <Contact key={contacts.id} {...contacts} />
     </div>
   );
 };
