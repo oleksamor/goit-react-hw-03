@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import ContactList from "./components/ContactList/ContactList";
+import * as Yup from "yup";
 
 function App() {
   const [contacts, setContacts] = useState([

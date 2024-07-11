@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import s from "./Contact.module.css";
-// import
 
 const Contact = ({ handleDeleteContact, id }) => {
   return (
