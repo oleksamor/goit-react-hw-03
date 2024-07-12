@@ -1,29 +1,87 @@
-import { useState, useEffect } from "react";
-import "./App.css";
+import { useEffect, useState } from "react";
+import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
+import SearchBox from "./components/SearchBox/SearchBox";
+import initialContacts from "./contacts.json";
 import * as Yup from "yup";
 
-function App() {
-  const [contacts, setContacts] = useState([
-    { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
-    { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
-    { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-    { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-  ]);
+const App = () => {
+  const [contacts, setContacts] = useState(initialContacts);
+  // LOCAL STORAGE  //
 
-  const handleDeleteContact = (id) => {
-    console.log(id);
+  useEffect(() => {
+    const savedContacts = JSON.parse(localStorage.getItem("contacts"));
+    if (savedContacts) {
+      setContacts(savedContacts);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
+
+  // ADDING A NEW CONTACT //
+
+  const addContact = (newContact) => {
+    setContacts((prevContact) => {
+      return [...prevContact, newContact];
+    });
   };
 
-  return (
-    <div>
-      <h1>Phonebook</h1>
+  const initialValues = {
+    name: "",
+    number: "",
+  };
 
-      {/* <ContactForm /> */}
-      {/* <SearchBox /> */}
-      <ContactList />
-    </div>
+  const handleSubmit = (data, actions) => {
+    addContact({
+      id: Date.now(),
+      name: data.name,
+      number: data.number,
+    });
+    actions.resetForm();
+  };
+
+  // VALIDATION //
+
+  const registerSchema = Yup.object({
+    name: Yup.string()
+      .required("Required")
+      .min(3, "Too short!")
+      .max(50, "Too long!"),
+    number: Yup.string()
+      .required("Required")
+      .min(3, "Too short!")
+      .max(50, "Too long!"),
+  });
+
+  // DELETING CONTACTS //
+
+  const deleteContact = (contactId) => {
+    setContacts((prevContact) => {
+      return prevContact.filter((contact) => contact.id !== contactId);
+    });
+  };
+
+  const [filter, setFilter] = useState("");
+
+  const visibleContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
   );
-}
+
+  return (
+    <>
+      <h1>Phonebook</h1>
+      <ContactForm
+        initialValues={initialValues}
+        addContact={addContact}
+        handleSubmit={handleSubmit}
+        registerSchema={registerSchema}
+      />
+      <SearchBox value={filter} onSearch={setFilter} />
+      <ContactList contacts={visibleContacts} deleteContact={deleteContact} />
+    </>
+  );
+};
 
 export default App;
