@@ -7,7 +7,6 @@ import * as Yup from "yup";
 
 const App = () => {
   const [contacts, setContacts] = useState(initialContacts);
-  // LOCAL STORAGE  //
 
   useEffect(() => {
     const savedContacts = JSON.parse(localStorage.getItem("contacts"));
