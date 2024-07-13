@@ -1,16 +1,29 @@
-import { useState, useEffect } from "react";
 import s from "./Contact.module.css";
 
-const Contact = ({ handleDeleteContact, id }) => {
+// import { FaUserAlt } from "react-icons/fa";
+// import { FaPhone } from "react-icons/fa6";
+
+const Contact = ({ name, number, id, deleteContact }) => {
   return (
-    <li>
-      <span className={s.item}>Rosie Simpson</span>
-      <br />
-      <span className={s.item}>443-89-56</span>
-      <button onClick={handleDeleteContact(id)} className="button" size="18px">
+    <div className={s.wrapper}>
+      <div className={s.userWrapper}>
+        <p className={s.text}>
+          <span className={s.span}>
+            {/* <FaUserAlt color="rgb(51, 51, 105)" /> */}
+          </span>
+          {name}
+        </p>
+        <p className={s.text}>
+          <span className={s.span}>
+            {/* <FaPhone color="rgb(51, 51, 105)" /> */}
+          </span>
+          {number}
+        </p>
+      </div>
+      <button onClick={() => deleteContact(id)} className={s.button}>
         Delete
       </button>
-    </li>
+    </div>
   );
 };
 
