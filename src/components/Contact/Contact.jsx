@@ -1,8 +1,8 @@
 import s from "./Contact.module.css";
 
-const Contact = ({ name, number, id, deleteContact }) => {
+const Contact = ({ name, number, id, onDeleteContact }) => {
   return (
-    <div className={s.wrapper}>
+    <li className={s.wrapper}>
       <div className={s.userWrapper}>
         <p className={s.text}>
           <span className={s.span}></span>
@@ -13,10 +13,10 @@ const Contact = ({ name, number, id, deleteContact }) => {
           {number}
         </p>
       </div>
-      <button onClick={() => deleteContact(id)} className={s.button}>
+      <button onClick={() => onDeleteContact(id)} className={s.button}>
         Delete
       </button>
-    </div>
+    </li>
   );
 };
 
