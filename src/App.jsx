@@ -6,20 +6,14 @@ import initialContacts from "./contacts.json";
 import * as Yup from "yup";
 
 const App = () => {
-  const [contacts, setContacts] = useState(initialContacts);
-
-  useEffect(() => {
-    const savedContacts = JSON.parse(localStorage.getItem("contacts"));
-    if (savedContacts) {
-      setContacts(savedContacts);
-    }
-  }, []);
+  const [contacts, setContacts] = useState(() => {
+    const savedContacts = localStorage.getItem("contacts");
+    return savedContacts ? JSON.parse(savedContacts) : initialContacts;
+  });
 
   useEffect(() => {
     localStorage.setItem("contacts", JSON.stringify(contacts));
   }, [contacts]);
-
-  // ADDING A NEW CONTACT //
 
   const addContact = (newContact) => {
     setContacts((prevContact) => {
