@@ -1,9 +1,11 @@
+import react from "react";
+
 import s from "./SearchBox.module.css";
 
 const SearchBox = ({ value, onSearch }) => {
   return (
-    <div className={s.wrapper}>
-      <p className={s.text}>Find contacts by name</p>
+    <div>
+      <p className={s.lable}>Find contacts by name</p>
       <input
         type="text"
         className={s.input}
