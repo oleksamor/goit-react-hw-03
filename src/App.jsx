@@ -35,7 +35,11 @@ const App = () => {
     actions.resetForm();
   };
 
-  // VALIDATION //
+  const deleteContact = (contactId) => {
+    setContacts((prev) => {
+      return prev.filter((contact) => contact.id !== contactId);
+    });
+  };
 
   const registerSchema = Yup.object({
     name: Yup.string()
@@ -47,14 +51,6 @@ const App = () => {
       .min(3, "Too short!")
       .max(50, "Too long!"),
   });
-
-  // DELETING CONTACTS //
-
-  const deleteContact = (contactId) => {
-    setContacts((prevContact) => {
-      return prevContact.filter((contact) => contact.id !== contactId);
-    });
-  };
 
   const [filter, setFilter] = useState("");
 
