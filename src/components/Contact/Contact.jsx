@@ -9,7 +9,7 @@ const Contact = ({ name, number, id, handleDeleteContact }) => {
           {name}
         </p>
         <p className={s.text}>
-          {/* <span className={s.span}></span> */}
+          <span className={s.span}></span>
           {number}
         </p>
       </div>

@@ -10,14 +10,22 @@ const ContactForm = ({ initialValues, handleSubmit, registerSchema }) => {
         onSubmit={handleSubmit}
       >
         <Form className={s.form}>
-          <label>
+          <label className={s.lable}>
             <span className={s.text}>Name</span>
-            <Field className={s.input} name="name"></Field>
+            <Field
+              className={s.input}
+              name="name"
+              placeholder="Contact name"
+            ></Field>
             <ErrorMessage name="name" component="span" className={s.error} />
           </label>
           <label>
             <span className={s.text}> Number</span>
-            <Field className={s.input} name="number"></Field>
+            <Field
+              className={s.input}
+              name="number"
+              placeholder="Contact number"
+            ></Field>
             <ErrorMessage name="number" component="span" className={s.error} />
           </label>
           <button type="submit" className={s.button}>

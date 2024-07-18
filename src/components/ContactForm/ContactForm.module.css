@@ -14,8 +14,19 @@
     margin-top: 20px;
 }
 
+.lable {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .text {
-    color: #f3210a;
+    color: #d01b07;
+}
+
+.lable span {
+    font-size: 16px;
+    font-style: normal;
 }
 
 .input {
@@ -31,6 +42,10 @@
     border-radius: 4px;
     background-color: rgb(101, 101, 131);
     padding: 10px;
+}
+
+.button:hover {
+    background-color: rgb(8, 8, 180);
 }
 
 .error {
